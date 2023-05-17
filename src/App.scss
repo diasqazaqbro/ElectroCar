@@ -108,3 +108,13 @@ h6 {
     display: flex;
   }
 }
+
+.footer {
+  background: #2b8401;
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+}
