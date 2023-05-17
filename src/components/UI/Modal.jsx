@@ -1,31 +1,31 @@
 import React from "react";
-import cars from "./common/cars.png";
-import carsLogo from "./common/carsLogo.png";
-const Modal = () => {
+import cars from "../../common/cars.png";
+import carsLogo from "../../common/carsLogo.png";
+const Modal = ({ car }) => {
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id="exampleModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">
               Подробнее:
             </h5>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             <img src={carsLogo} alt="" />
-            <span>Zeekr001</span>
+            <span>{car.name}</span>
             <img src={cars} alt="" />
             <div className="modal__price">от 107 000</div>
             <div className="tuning">
@@ -50,10 +50,10 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div class=" text-center p-4">
+          <div className=" text-center p-4">
             <button
               type="button"
-              class="btn btn-success btn-lg"
+              className="btn btn-success btn-lg"
               data-bs-dismiss="modal"
             >
               Заказать

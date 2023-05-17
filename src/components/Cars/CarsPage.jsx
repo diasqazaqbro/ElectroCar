@@ -5,6 +5,7 @@ import CarItem from "./CarItem";
 const state = {
   cars: [
     {
+      id: 1,
       inStock: true,
       filter: "electro",
       name: "Zeekr001 1",
@@ -18,6 +19,7 @@ const state = {
       moreDetails: {},
     },
     {
+      id: 3,
       inStock: true,
       filter: "sedans",
       name: "Сидан 2",
@@ -30,6 +32,7 @@ const state = {
       },
     },
     {
+      id: 4,
       inStock: true,
       filter: "minivans",
       name: "Минивэн 3",
@@ -42,6 +45,7 @@ const state = {
       },
     },
     {
+      id: 5,
       inStock: true,
       filter: "minivans",
       name: "диас Минивэн 3",
@@ -57,18 +61,23 @@ const state = {
 };
 
 const CarsPage = () => {
+
   const [filterState, setFilterState] = useState("electro");
   const [inStockMode, setInStockMode] = useState(true);
   const mapToCarsFilter = state.cars.map((car) => {
     if (car.filter === filterState) {
-      return <CarItem car={car} />;
+      return (
+        <div>
+          <CarItem state={state.cars} car={car} />;
+        </div>
+      );
     }
   });
   return (
     <section className="cars">
       <div className="container">
         <h2 className="cars__suptitle my-3">
-          Автомобили по всему Казахстану и СНГ Режим:
+          Автомобили по всему Казахстану и СНГ
         </h2>
         <h1 className="cars__title my-3">Электромобили</h1>
         <CarsFilter
@@ -81,8 +90,11 @@ const CarsPage = () => {
               ? mapToCarsFilter
               : state.cars.map((car) => {
                   if (car.inStock) {
-                    return  <CarItem car={car} />;
-                   
+                    return (
+                      <div>
+                        <CarItem state={state.cars} car={car} />
+                      </div>
+                    );
                   }
                 })}
           </div>

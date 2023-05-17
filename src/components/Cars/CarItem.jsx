@@ -5,9 +5,14 @@ import ico3 from "../../common/ico3.png";
 import ico4 from "../../common/ico4.png";
 import cars from "../../common/cars.png";
 import carsLogo from "../../common/carsLogo.png";
-const CarItem = ({car}) => {
+import Modal from "../UI/Modal";
+
+const CarItem = ({ car, state }) => {
+
   return (
     <div className="col-sm-6">
+      <Modal car={car}/>
+
       <div className="card p-3">
         <div className="card-body">
           <div className="card__title">
@@ -55,6 +60,7 @@ const CarItem = ({car}) => {
               Заказать
             </button>
             <button
+
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
