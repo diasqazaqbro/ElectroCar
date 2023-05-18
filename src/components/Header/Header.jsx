@@ -15,7 +15,7 @@ const Header = () => {
             />
           </div>
           <div className="col-6">
-            <ul className="nav text-center">
+            {/* <ul className="nav text-center">
               <li className="nav-item ">
                 <a className="nav-link " href="#">
                   Доставка и оплата
@@ -26,7 +26,7 @@ const Header = () => {
                   Наши партнеры
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <div className="col-3">
             <a href="#" className="header__phone">

@@ -1,76 +1,13 @@
 import React, { useState } from "react";
-
 import CarsFilter from "./CarsFilter";
 import CarItem from "./CarItem";
-const state = {
-  cars: [
-    {
-      id: 1,
-      inStock: true,
-      filter: "electro",
-      name: "Zeekr001 1",
-      price: "от 100 000 тг",
-      desk: {
-        desk1: "пгшпшмшпгш",
-        desk2: "3.8 секунд 2",
-        desk3: "3.8 секунд 3",
-        desk4: "3.8 секунд 4",
-      },
-      moreDetails: {},
-    },
-    {
-      id: 3,
-      inStock: true,
-      filter: "sedans",
-      name: "Сидан 2",
-      price: "от 100 000 тг",
-      desk: {
-        desk1: "3.8 секунд 1",
-        desk2: "3.8 секунд 2",
-        desk3: "3.8 секунд 3",
-        desk4: "3.8 секунд 4",
-      },
-    },
-    {
-      id: 4,
-      inStock: true,
-      filter: "minivans",
-      name: "Минивэн 3",
-      price: "от 100 000 тг",
-      desk: {
-        desk1: "3.8 секунд 1",
-        desk2: "3.8 секунд 2",
-        desk3: "3.8 секунд 3",
-        desk4: "3.8 секунд 4",
-      },
-    },
-    {
-      id: 5,
-      inStock: true,
-      filter: "minivans",
-      name: "диас Минивэн 3",
-      price: "от 100 000 тг",
-      desk: {
-        desk1: "3.8 секунд 1",
-        desk2: "3.8 секунд 2",
-        desk3: "3.8 секунд 3",
-        desk4: "3.8 секунд 4",
-      },
-    },
-  ],
-};
 
-const CarsPage = () => {
-
+const CarsPage = ({cars}) => {
   const [filterState, setFilterState] = useState("electro");
   const [inStockMode, setInStockMode] = useState(true);
-  const mapToCarsFilter = state.cars.map((car) => {
+  const mapToCarsFilter = cars.map((car) => {
     if (car.filter === filterState) {
-      return (
-        <div>
-          <CarItem state={state.cars} car={car} />;
-        </div>
-      );
+      return <CarItem state={cars} car={car} />;
     }
   });
   return (
@@ -88,13 +25,9 @@ const CarsPage = () => {
           <div className="row gy-3">
             {inStockMode
               ? mapToCarsFilter
-              : state.cars.map((car) => {
+              : cars.map((car) => {
                   if (car.inStock) {
-                    return (
-                      <div>
-                        <CarItem state={state.cars} car={car} />
-                      </div>
-                    );
+                    return <CarItem state={cars} car={car} />;
                   }
                 })}
           </div>

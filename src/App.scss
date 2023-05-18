@@ -118,3 +118,23 @@ h6 {
   }
 
 }
+
+
+.carModalBack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2222227e;
+  z-index: 9999;
+}
+
+.carModal {
+  border-radius: 9px;
+  position: relative;
+  width: 50%;
+  margin: 30px auto;
+  background-color: white;
+  padding: 40px 30px;
+}
