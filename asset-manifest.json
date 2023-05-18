@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ElectroCar/static/css/main.99dbe0fc.css",
+    "main.js": "/ElectroCar/static/js/main.766719e6.js",
+    "static/js/787.d053ff59.chunk.js": "/ElectroCar/static/js/787.d053ff59.chunk.js",
+    "static/media/cars.png": "/ElectroCar/static/media/cars.80542368cf35b8e9950e.png",
+    "static/media/logo.png": "/ElectroCar/static/media/logo.594b76366b9bc029a32a.png",
+    "index.html": "/ElectroCar/index.html",
+    "main.99dbe0fc.css.map": "/ElectroCar/static/css/main.99dbe0fc.css.map",
+    "main.766719e6.js.map": "/ElectroCar/static/js/main.766719e6.js.map",
+    "787.d053ff59.chunk.js.map": "/ElectroCar/static/js/787.d053ff59.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99dbe0fc.css",
+    "static/js/main.766719e6.js"
+  ]
+}
