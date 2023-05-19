@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer mt-5">
       <div className="container">
-        <div className="footer__inner">
+        <div className="flex-column d-flex align-items-center">
           <ul className="nav my-4">
             <li className="nav-item ">
               <a className="nav-link" href="#">

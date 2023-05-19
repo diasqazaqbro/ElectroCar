@@ -7,15 +7,15 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-auto">
             <img
               src={logo}
               alt=""
               className="rounded float-start header__logo"
             />
           </div>
-          <div className="col-6">
-            {/* <ul className="nav text-center">
+          {/* <div className="col-6">
+            <ul className="nav text-center">
               <li className="nav-item ">
                 <a className="nav-link " href="#">
                   Доставка и оплата
@@ -26,13 +26,9 @@ const Header = () => {
                   Наши партнеры
                 </a>
               </li>
-            </ul> */}
-          </div>
-          <div className="col-3">
-            <a href="#" className="header__phone">
-              <img src={phone} alt="" className="rounded mx-auto d-block" />
-            </a>
-          </div>
+            </ul>
+          </div> */}
+ 
         </div>
       </div>
     </header>

@@ -1,110 +1,263 @@
-import React, { useState } from "react";
-import cars from "../../common/cars.png";
+import React, { useEffect, useState } from "react";
 import carsLogo from "../../common/carsLogo.png";
+import CarOrder from "./CarOrder";
 const CarAbout = ({ car, onShowItem, calculatorProduct, currentPrice }) => {
+  console.log(car);
+  //TuningColor LocalState
   const [currentColorName, setcurrentColorName] = useState(
     car.tuningColor[0].name
   );
-  // const [currentWheelsName, setcurrentWheelsName] = useState(
-  //   car.tuningWheels[0].name
-  // );
+  const [currentColorPrice, setcurrentColorPrice] = useState(0);
+  //TuningWheels LocalState
+  const [currentWheelsName, setcurrentWheelsName] = useState(
+    car.tuningWheels[0].name
+  );
+  const [currentWheelsPrice, setcurrentWheelsPrice] = useState(0);
+  const [currentSalonName, setcurrentSalonName] = useState(
+    car.tuningSalon[0].name
+  );
+  const [currentSalonPrice, setcurrentSalonPrice] = useState(0);
+
+  // Main LocalState
+  const [currentMainPrice, setcurrentMainPrice] = useState(car.price);
   const [currentImg, setcurrentImg] = useState(car.tuningColor[0].img);
-  const sumPrice = (tuningColor, tuningWheels) => {
-    const sum = car.price + tuningColor;
+
+  const sumPrice = () => {
+    const sum =
+      car.price + currentColorPrice + currentWheelsPrice + currentSalonPrice;
+    setcurrentMainPrice(sum);
     calculatorProduct(sum);
   };
 
+  // OrderMenu
+  const [order, setOrder] = useState(false);
+  const onShowOrder = () => {
+    setOrder(!order);
+  };
+
   return (
-    <div className="modal-dialog carModalBack">
-      <div className="modal-content carModal">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">
-            Подробнее:
-          </h5>
-          <button
-            type="button"
-            className="btn-close"
-            onClick={() => {
-              onShowItem();
-            }}
-          ></button>
-        </div>
-        <div className="modal-body">
-          <img  src={carsLogo} alt="" />
-          <span>{car.name}</span>
-          <img style={{width: '50%'}}  src={currentImg} alt="" />
-          <div className="modal__price">от 107 000</div>
-          <div className="tuning">
-            <h1 className="tuning__title">Выбери свой {car.name}</h1>
-            <div className="tuning__color">
-              Цвет кузова:{" "}
-              <span>
-                {car.tuningColor.map((tuning) => {
-                  return (
+    <div className="carModalBack">
+      <div className="carModal context">
+        <div className="content">
+          <div className="modal-header my-2">
+            <h5 className="modal-title" id="exampleModalLabel">
+              <img src={carsLogo} alt="" />
+              <span>{car.name}</span>
+            </h5>
+            <button
+              type="button"
+              className="btn-close"
+              onClick={() => {
+                onShowItem();
+              }}
+            ></button>
+          </div>
+
+          <div className="row">
+            <div className="col-md-5 col-sm-12">
+              <img className="img-thumbnail" src={currentImg} alt="" />
+            </div>
+            <div className="col-md-7 col-sm-12">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
                     <button
-                      onClick={() => {
-                        setcurrentColorName(tuning.name);
-                        setcurrentImg(tuning.img);
-                        sumPrice(tuning.price);
-                      }}
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseOne"
                     >
-                      {tuning.name}
-                      <div>+ {tuning.price} $</div>
+                      Основная Характеристика
                     </button>
-                  );
-                })}
-              </span>
-              <div>Нынешний цвет {currentColorName}</div>
-              <div>
-                Конечная сумма: {currentPrice ? currentPrice : car.price}
+                  </h2>
+                  <div
+                    id="flush-collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample"
+                  >
+                    <div class="accordion-body">
+                      <div className="row gx-5 gy-3">
+                        <div className="col-md-4">
+                          Разгон до 100 км/ч
+                          <div className="fw-bold">{car.desk.desk1}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Двигатель
+                          <div className="fw-bold">{car.desk.desk2}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Запас хода
+                          <div className="fw-bold">{car.desk.desk3}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Привод
+                          <div className="fw-bold">{car.desk.desk4}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Мест / дверей
+                          <div className="fw-bold">{car.desk.desk5}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Д*Ш*В
+                          <div className="fw-bold">{car.desk.desk6}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Колесная база
+                          <div className="fw-bold">{car.desk.desk7}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Колеса
+                          <div className="fw-bold">{car.desk.desk8}</div>
+                        </div>
+                        <div className="col-md-4">
+                          Материал салона
+                          <div className="fw-bold">{car.desk.desk9}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseTwo"
+                    >
+                      Доступные варианты
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample"
+                  >
+                    <div class="accordion-body">
+                      <h1 className="tuning__title my-3">
+                        Выбери свой {car.name}
+                      </h1>
+                      <div className="tuning">
+                        Цвет кузова:{" "}
+                        <span>
+                          {car.tuningColor.map((tuning) => {
+                            return (
+                              <span className="tuning__item">
+                                <img
+                                  onMouseUp={() => {
+                                    setcurrentColorPrice(tuning.price);
+                                  }}
+                                  onClick={() => {
+                                    setcurrentColorName(tuning.name);
+                                    setcurrentImg(tuning.img);
+                                    sumPrice();
+                                  }}
+                                  src={tuning.imgLogo}
+                                  alt=""
+                                />
+                              </span>
+                            );
+                          })}
+                          <div className="tuning__name fw-bold">
+                            {currentColorName} +<span>{currentColorPrice}</span>{" "}
+                            $
+                          </div>
+                        </span>
+                      </div>
+                      <div className="tuning">
+                        Цвет салона:
+                        <span>
+                          {car.tuningSalon.map((tuning) => {
+                            return (
+                              <span className="tuning__item">
+                                <img
+                                  onMouseUp={() => {
+                                    setcurrentSalonPrice(tuning.price);
+                                  }}
+                                  onClick={() => {
+                                    setcurrentSalonName(tuning.name);
+                                    setcurrentImg(tuning.img);
+                                    sumPrice();
+                                  }}
+                                  src={tuning.imgLogo}
+                                  alt=""
+                                />
+                              </span>
+                            );
+                          })}
+                          <div className="tuning__name fw-bold">
+                            {currentSalonName} +<span>{currentSalonPrice}</span>{" "}
+                            $
+                          </div>
+                        </span>
+                      </div>
+                      <div className="tuning">
+                        Колеса:
+                        <span>
+                          {car.tuningWheels.map((tuning) => {
+                            return (
+                              <span className="tuning__item">
+                                <img
+                                  onMouseUp={() => {
+                                    setcurrentWheelsPrice(tuning.price);
+                                  }}
+                                  onClick={() => {
+                                    setcurrentWheelsName(tuning.name);
+                                    setcurrentImg(tuning.img);
+                                    sumPrice();
+                                  }}
+                                  src={tuning.imgLogo}
+                                  alt=""
+                                />
+                              </span>
+                            );
+                          })}
+                          <div className="tuning__name fw-bold">
+                            {currentWheelsName} +
+                            <span>{currentWheelsPrice}</span> $
+                          </div>
+                        </span>
+                      </div>
+                      <hr />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* <div className="tuning__salon">Цвет салона:</div> */}
-            {/* <div className="tuning__wheels">
-              Колеса:
-              <span>
-                {car.tuningWheels.map((tuning) => {
-                  return (
-                    <button
-                      onClick={() => {
-                        setcurrentWheelsName(tuning.name);
-                        setcurrentImg(tuning.img);
-                        sumPrice(tuning.price);
-                      }}
-                    >
-                      {tuning.name}
-                      <div>+ {tuning.price} $</div>
-                    </button>
-                  );
-                })}
-              </span>
-            </div> */}
-            {/* <div>Нынешние колеса{currentWheelsName}</div> */}
-          </div>
-          <div className="about-car">
-            <h1 className="about-car__title">Характеристика</h1>
-            <div className="about-car__desk">
-              Разгон до 100 км/ч: 3.8 секунды Двигатель: 544 л.с Запас хода: 606
-              км по CLTC Привод: 4WD (Полный) Мест / дверей: 5 / 5 Д*Ш*В:
-              4970*1999*1560 мм Колесная база: 3005 мм Колеса: 255/45 R21
-              Материал салона: Кожа Наппа + алькантара Масса (кг): 2339 кг
-              Подвеска: Пневмоподвеска с системой электромагнитной амортизации
-              CCD, спереди на двойных поперечных рычагах, задняя многорычажная
-              Батарея: Тройная литиевая на 100 кВт*ч. AC 7 кВт Клиренс: от 150
-              до 210 мм Багажник: 2144 л Тип двигателя: Постоянный магнит /
-              синхронный Зимний пакет: Обогрев руля, первого и второго ряда,
-              зеркал, тепловой насос (ТЭН)
+              <div className="total my-3">
+                <div className="d-flex justify-content-between">
+                  <h1 className="fw-light">Итог</h1>
+                  <h1 className="fw-normal">{currentMainPrice} $</h1>
+                </div>
+                <button
+                  onClick={onShowOrder}
+                  type="button"
+                  className="btn btn-success my-3 btn-lg"
+                  data-bs-dismiss="modal"
+                >
+                  Заказать
+                </button>
+              </div>
+              {order && (
+                <CarOrder
+                  currentColorPrice={currentColorPrice}
+                  currentWheelsName={currentWheelsName}
+                  currentWheelsPrice={currentWheelsPrice}
+                  currentSalonName={currentSalonName}
+                  currentSalonPrice={currentSalonPrice}
+                  currentMainPrice={currentMainPrice}
+                  currentColorName={currentColorName}
+                  car={car}
+                  onShowOrder={onShowOrder}
+                />
+              )}
             </div>
           </div>
-        </div>
-        <div className=" text-center p-4">
-          <button
-            type="button"
-            className="btn btn-success btn-lg"
-            data-bs-dismiss="modal"
-          >
-            Заказать
-          </button>
         </div>
       </div>
     </div>

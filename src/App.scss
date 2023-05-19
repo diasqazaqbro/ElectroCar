@@ -1,18 +1,17 @@
 @import url("https://fonts.cdnfonts.com/css/gilroy-bold");
 $linkText: #1976d2;
-$greyText: #a3a3a3;
+$whiteColor: #ffffff;
+$blackColor: #000000;
 
-@mixin fontMain($wei: 400) {
-  font-style: normal;
-  font-weight: $wei;
-  font-size: 16px;
-  line-height: 20px;
-}
+$biggestFont: 36px;
+$bigFont: 24px;
+$midleFont: 16px;
+$smallFont: 12px;
 
 body {
   margin: 0;
   font-family: "Gilroy-Regular", sans-serif;
-  font-size: 15px;
+  font-size: $midleFont;
   line-height: 1.6;
 }
 
@@ -32,93 +31,81 @@ h6 {
 }
 
 .header {
-  background: #000000;
+  background: $blackColor;
+  padding: 60px 0;
+  position: relative;
+  img {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+  }
 }
 
 .nav {
   a {
     font-weight: 400;
-    font-size: 16px;
+    font-size: $midleFont;
     opacity: 0.5;
-    color: #ffffff;
+    color: $whiteColor;
   }
   a:hover {
     opacity: 1;
-    color: #ffffff;
+    color: $whiteColor;
   }
 }
 
 .cars {
   .cars__suptitle {
     font-weight: 400;
-    font-size: 26px;
-    color: #000000;
+    font-size: $bigFont;
+    color: $blackColor;
     opacity: 0.6;
   }
 
   .cars__title {
     font-style: normal;
     font-weight: 400;
-    font-size: 50px;
+    font-size: $biggestFont;
   }
 
   .cars__buttons {
-    display: flex;
-    justify-content: space-around;
     button {
       font-weight: 400;
-      font-size: 30px;
+      font-size: $bigFont;
       line-height: 23px;
-      padding: 12px 25px;
-      color: #ffffff;
+      color: $whiteColor;
     }
   }
   .card__name {
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: $biggestFont;
     line-height: 35px;
   }
 
   .card__price {
     font-style: normal;
     font-weight: 400;
-    font-size: 30px;
+    font-size: $biggestFont;
     line-height: 35px;
-
-    color: #000000;
-
+    color: $blackColor;
     opacity: 0.6;
   }
 
   .card__desk {
-    font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    color: #000000;
+    font-size: $smallFont;
+    color: $blackColor;
     opacity: 0.6;
-  }
-
-  .card__title {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .card__info {
-    display: flex;
   }
 }
 
 .footer {
   background: #2b8401;
-  .footer__inner {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
 }
-
 
 .carModalBack {
   position: fixed;
@@ -128,13 +115,122 @@ h6 {
   bottom: 0;
   background-color: #2222227e;
   z-index: 9999;
+  overflow-x: auto;
 }
 
 .carModal {
   border-radius: 9px;
   position: relative;
-  width: 50%;
+  width: 80%;
   margin: 30px auto;
   background-color: white;
   padding: 40px 30px;
+}
+
+.tuning__title {
+  font-size: $biggestFont;
+}
+
+.tuning {
+  font-size: $bigFont;
+  img {
+    width: 30px;
+  }
+  .tuning__name {
+    font-size: $midleFont;
+    span {
+      color: #2b8401;
+    }
+  }
+}
+
+.carOrderBack {
+  position: fixed;
+  overflow-x: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2222227e;
+  z-index: 9999;
+  .carOrder {
+    border-radius: 9px;
+    position: relative;
+    width: 80%;
+    margin: 30px auto;
+    background-color: white;
+    padding: 40px 30px;
+  }
+}
+
+.order__color {
+  color: #2b8401;
+}
+
+.mobileversion__show {
+  display: none;
+}
+
+
+@media (max-width: 1400px) {
+  /*
+  Стили для устройств, у которых ширина viewport меньше или равно 1400 пикселей,
+  но больше 990 пикселей.
+  Эти стили будут использованы для планшетов и ноутбуков с низким разрешением
+  */
+}
+
+@media (max-width: 990px) {
+  /*
+  Стили для устройств, у которых ширина viewport меньше или равно 990 пикселей,
+  но больше 770 пикселей.
+  Эти стили подойдут для некоторых мобильных устройств и планшетов
+  */
+}
+
+@media (max-width: 770px) {
+  /*
+  Стили для устройств, у которых ширина viewport меньше или равно 770 пикселей.
+  Это множество мобильных устройств
+  */
+
+  .mobileversion__none {
+    display: none;
+  }
+
+  .mobileversion__show {
+    display: block;
+  }
+
+  .cars {
+    .card__name {
+      font-size: 26px;
+    }
+    .card__price {
+      font-size: 26px;
+    }
+    .cars__suptitle {
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+  .none {
+    display: none;
+  }
+  .tuning__title {
+    font-size: 18px;
+  }
+  .tuning {
+    font-size: 16px;
+    img {
+      width: 30px;
+      margin-right: 5px;
+    }
+    .tuning__name {
+      font-size: 12px;
+      span {
+        color: #2b8401;
+      }
+    }
+  }
 }

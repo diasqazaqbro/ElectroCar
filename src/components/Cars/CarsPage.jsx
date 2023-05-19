@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import CarsFilter from "./CarsFilter";
 import CarItem from "./CarItem";
+import CarsFilterMobile from "./CarsFilterMobile";
 
-const CarsPage = ({cars}) => {
+const CarsPage = ({ cars }) => {
   const [filterState, setFilterState] = useState("electro");
   const [inStockMode, setInStockMode] = useState(true);
   const mapToCarsFilter = cars.map((car) => {
@@ -18,6 +19,10 @@ const CarsPage = ({cars}) => {
         </h2>
         <h1 className="cars__title my-3">Электромобили</h1>
         <CarsFilter
+          setFilterState={setFilterState}
+          setInStockMode={setInStockMode}
+        />
+        <CarsFilterMobile
           setFilterState={setFilterState}
           setInStockMode={setInStockMode}
         />

@@ -10,8 +10,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <CarsPageContainer />
       <Routes>
-        <Route path="/car" element={<CarsPageContainer />} />
+        {/* <Route path="/car" element={<CarsPageContainer />} /> */}
       </Routes>
       <Stamps />
       <Footer />
