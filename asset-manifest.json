@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ElectroCar/static/css/main.ca0532ca.css",
-    "main.js": "/ElectroCar/static/js/main.5928038a.js",
+    "main.js": "/ElectroCar/static/js/main.debecd54.js",
     "static/js/787.d053ff59.chunk.js": "/ElectroCar/static/js/787.d053ff59.chunk.js",
     "static/media/logo.png": "/ElectroCar/static/media/logo.594b76366b9bc029a32a.png",
     "index.html": "/ElectroCar/index.html",
     "main.ca0532ca.css.map": "/ElectroCar/static/css/main.ca0532ca.css.map",
-    "main.5928038a.js.map": "/ElectroCar/static/js/main.5928038a.js.map",
+    "main.debecd54.js.map": "/ElectroCar/static/js/main.debecd54.js.map",
     "787.d053ff59.chunk.js.map": "/ElectroCar/static/js/787.d053ff59.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ca0532ca.css",
-    "static/js/main.5928038a.js"
+    "static/js/main.debecd54.js"
   ]
 }
